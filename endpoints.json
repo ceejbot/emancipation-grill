@@ -1,0 +1,12 @@
+{
+    "initialize":
+    {
+        "method": "PUT",
+        "path": "/sys/init"
+    },
+    "isInitialized":
+    {
+        "method": "GET",
+        "path": "/sys/init"
+    }
+}

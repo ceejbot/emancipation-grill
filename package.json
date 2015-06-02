@@ -1,0 +1,38 @@
+{
+  "name": "emancipation-grill",
+  "version": "0.0.0",
+  "description": "a node client for Hashicorp's Vault",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "~2.9.27",
+    "client-request": "~1.0.0"
+  },
+  "devDependencies": {
+    "blanket": "~1.1.7",
+    "mocha": "~2.2.5",
+    "mocoverage": "~1.0.0",
+    "must": "~0.12.0",
+    "sinon": "~1.14.1",
+    "travis-cov": "~0.2.5"
+  },
+  "scripts": {
+    "lint": "jshint index.js test.js && jscs test.js index.js",
+    "test": "mocha -t 5000 --check-leaks --ui exports --require blanket -R mocoverage test.js",
+    "test-cov": "mocha -t 5000 --require blanket -R travis-cov test.js",
+    "test-travis": "npm run lint && npm test && npm test-cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceejbot/emancipation-grill.git"
+  },
+  "keywords": [
+    "hashicorp",
+    "vault"
+  ],
+  "author": "C J Silverio <ceejceej@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ceejbot/emancipation-grill/issues"
+  },
+  "homepage": "https://github.com/ceejbot/emancipation-grill#readme"
+}

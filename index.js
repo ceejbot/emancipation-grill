@@ -2,7 +2,7 @@ var
     _         = require('lodash'),
     assert    = require('assert'),
     P         = require('bluebird'),
-    Request   = require('client-request'),
+    Request   = require('request'),
     endpoints = require('./endpoints')
 ;
 
@@ -35,6 +35,11 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
             json:   true,
         };
 
+        if (ropts.method === 'PUT')
+            ropts.body = opts;
+
+        // TODO auth using Request.jar() to snag a cookie
+
         Request(ropts, function(err, res, body)
         {
             if (err)
@@ -42,6 +47,8 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
 
             if (res.statusCode >= 400)
                 return callback(new Error(`unexpected status code ${res.statusCode}`));
+
+            // TODO should handle other common status code responses
 
             callback(null, body);
         });

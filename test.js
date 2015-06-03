@@ -2,7 +2,6 @@
 
 var
     demand    = require('must'),
-    sinon     = require('sinon'),
     Grill     = require('./index'),
     endpoints = require('./endpoints')
 ;
@@ -38,6 +37,13 @@ describe('emancipation-grill', function()
 
     describe('functions', function()
     {
-        it('has tests');
+        var g = new Grill({ host: 'http://localhost:4444' });
+
+        var verbs = Object.keys(endpoints);
+        for (var i = 0; i < verbs.length; i++)
+        {
+            g.must.have.property(verbs[i]);
+            g[verbs[i]].must.be.a.function();
+        }
     });
 });

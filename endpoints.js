@@ -30,12 +30,12 @@ module.exports =
     mount:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/mounts/${opts.point}`; }
+        path: function(opts) { return `/sys/mounts/${opts.backend}`; }
     },
     unmount:
     {
         method: 'DELETE',
-        path: function(opts) { return `/sys/mounts/${opts.point}`; }
+        path: function(opts) { return `/sys/mounts/${opts.backend}`; }
     },
     remount:
     {

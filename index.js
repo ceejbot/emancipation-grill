@@ -8,10 +8,17 @@ var
 
 var Grill = module.exports = function Grill(opts)
 {
-    assert(_.isObject(opts), 'you must pass an options object to the constructor');
-    assert(opts.host && _.isString(opts.host), 'you must pass a host uri in opts.host');
+    assert(process.env.VAULT_ADDR, 'you must set the VAULT_ADDR environment variable');
+    assert(process.env.VAULT_TOKEN, 'you must set the VAULT_TOKEN environment variable');
 
-    this.host = opts.host;
+    this.host = process.env.VAULT_ADDR;
+    this.token = process.env.VAULT_TOKEN;
+
+    this.request = Request.defaults(
+    {
+        jar: true,
+        headers: { 'X-Vault-Token': this.token }
+    });
 
     var self = this;
 
@@ -21,29 +28,43 @@ var Grill = module.exports = function Grill(opts)
         self[k] = P.promisify(func).bind(self);
     });
 
-    this.health = P.promisify(this._health).bind(this);
+    _.each(Grill.functions, function(k)
+    {
+        self[k] = P.promisify(self['_' + k]).bind(self);
+    });
 };
+
+Grill.prototype.version = 'v1';
+
+// Not auto-generated, but need binding.
+Grill.functions = [ 'health', 'github', 'mapGithubTeam' ];
 
 Grill.prototype.makeCommand = function makeCommand(command, params)
 {
-    var func = function(opts, callback)
+    var func = function(name, data, callback)
     {
+        if (typeof data === 'function')
+        {
+            callback = data;
+            data = {};
+        }
+
         var ropts =
         {
             method: params.method || 'GET',
-            uri:    `${this.host}/v1${params.path(opts)}`,
+            uri:    `${this.host}/${this.version}${params.path(name)}`,
             json:   true,
         };
 
-        if (ropts.method === 'PUT')
-            ropts.body = opts;
+        if (ropts.method === 'POST' || ropts.method === 'PUT')
+            ropts.body = data;
 
-        // TODO auth using Request.jar() to snag a cookie
-
-        Request(ropts, function(err, res, body)
+        this.request(ropts, function(err, res, body)
         {
             if (err)
                 return callback(err);
+
+            console.log(body)
 
             if (res.statusCode >= 400)
                 return callback(new Error(`unexpected status code ${res.statusCode}`));
@@ -59,11 +80,22 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
 
 Grill.prototype._health = function _health(callback)
 {
-    Request(`${this.host}/v1/sys/health`, function(err, res, body)
+    this.request.get(`${this.host}/${this.version}/sys/health`, function(err, res, body)
     {
         if (err) return callback(err);
         if (res.statusCode === 200 || res.statusCode === 429 || res.statusCode === 500)
             return callback(null, body);
         callback(new Error(`unexpected status code ${res.statusCode}`));
     });
+};
+
+Grill.prototype._github = function _github(organization, callback)
+{
+    // enable
+    // then set config
+};
+
+Grill.prototype._mapGithubTeam = function _mapGithubTeam(team, policy, callback)
+{
+    // /auth/github/map/teams/:owners value=:policy
 };

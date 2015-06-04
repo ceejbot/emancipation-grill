@@ -23,6 +23,20 @@ module.exports =
         method: 'PUT',
         path: function(opts) { return '/sys/seal'; }
     },
+    read:
+    {
+        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+    },
+    write:
+    {
+        method: 'POST',
+        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+    },
+    delete:
+    {
+        method: 'DELETE',
+        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+    },
     mounts:
     {
         path: function(opts) { return '/sys/mounts'; }
@@ -30,17 +44,31 @@ module.exports =
     mount:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/mounts/${opts.backend}`; }
+        path: function(param) { return `/sys/mounts/${param}`; }
     },
     unmount:
     {
         method: 'DELETE',
-        path: function(opts) { return `/sys/mounts/${opts.backend}`; }
+        path: function(param) { return `/sys/mounts/${param}`; }
     },
     remount:
     {
         method: 'POST',
         path: function(opts) { return '/sys/remount'; }
+    },
+    auths:
+    {
+        path: function(opts) { return '/sys/auth'; }
+    },
+    enableAuth:
+    {
+        method: 'POST',
+        path: function(auth) { return `/sys/auth/${auth}`; }
+    },
+    disableAuth:
+    {
+        method: 'PUT',
+        path: function(auth) { return `/sys/auth/${auth}`; }
     },
     policies:
     {
@@ -49,27 +77,27 @@ module.exports =
     addPolicy:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/policy/${opts.policy}`; }
+        path: function(name) { return `/sys/policy/${name}`; }
     },
     removePolicy:
     {
         method: 'DELETE',
-        path: function(opts) { return `sys/policy/${opts.policy}`; }
+        path: function(name) { return `sys/policy/${name}`; }
     },
     renewLease:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/renew/${opts.lease}`; }
+        path: function(name) { return `/sys/renew/${name}`; }
     },
     revokeLease:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/revoke/${opts.lease}`; }
+        path: function(name) { return `/sys/revoke/${name}`; }
     },
     revokePrefix:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/revoke-prefix/${opts.prefix}`; }
+        path: function(prefix) { return `/sys/revoke-prefix/${prefix}`; }
     },
     audits:
     {
@@ -78,11 +106,11 @@ module.exports =
     enableAudit:
     {
         method: 'PUT',
-        path: function(opts) { return `/sys/audit/${opts.backend}`; }
+        path: function(backend) { return `/sys/audit/${backend}`; }
     },
     disableAudit:
     {
         method: 'DELETE',
-        path: function(opts) { return `/sys/audit/${opts.backend}`; }
+        path: function(backend) { return `/sys/audit/${backend}`; }
     },
 };

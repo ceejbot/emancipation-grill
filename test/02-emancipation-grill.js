@@ -2,22 +2,12 @@
 
 var
     demand    = require('must'),
-    Grill     = require('./index'),
-    endpoints = require('./endpoints')
+    Grill     = require('../index'),
+    endpoints = require('../lib/endpoints')
 ;
 
 describe('emancipation-grill', function()
 {
-    var unsealKey = process.env.VAULT_UNSEAL_TEST;
-
-    describe('exports', function()
-    {
-        it('exports a constructor', function()
-        {
-            Grill.must.be.a.function();
-        });
-    });
-
     describe('constructor', function()
     {
         it('can be constructed', function()
@@ -62,7 +52,7 @@ describe('emancipation-grill', function()
 
         it('must be able to write a secret', function(done)
         {
-            g.write('test1', { foo: 'bar'}, function(err)
+            g.writeSecret('test1', { foo: 'bar'}, function(err)
             {
                 demand(err).not.exist();
                 done();
@@ -71,7 +61,7 @@ describe('emancipation-grill', function()
 
         it('must be able to read a secret', function(done)
         {
-            g.read('test1', function(err, secret)
+            g.readSecret('test1', function(err, secret)
             {
                 demand(err).not.exist();
                 secret.must.be.an.object();
@@ -89,7 +79,7 @@ describe('emancipation-grill', function()
 
         it('must be able to delete a secret', function(done)
         {
-            g.delete('test1', function(err)
+            g.deleteSecret('test1', function(err)
             {
                 demand(err).not.exist();
                 g.read('test1', function(err, secret)

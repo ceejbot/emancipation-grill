@@ -25,17 +25,31 @@ module.exports =
     },
     read:
     {
-        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+        path: function(secret) { return `${encodeURIComponent(secret)}`; }
     },
     write:
     {
         method: 'POST',
-        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+        path: function(secret) { return `${encodeURIComponent(secret)}`; }
     },
     delete:
     {
         method: 'DELETE',
-        path: function(secret) { return `/${encodeURIComponent(secret)}`; }
+        path: function(secret) { return `${encodeURIComponent(secret)}`; }
+    },
+    readSecret:
+    {
+        path: function(secret) { return `/secret/${encodeURIComponent(secret)}`; }
+    },
+    writeSecret:
+    {
+        method: 'POST',
+        path: function(secret) { return `/secret/${encodeURIComponent(secret)}`; }
+    },
+    deleteSecret:
+    {
+        method: 'DELETE',
+        path: function(secret) { return `/secret/${encodeURIComponent(secret)}`; }
     },
     mounts:
     {

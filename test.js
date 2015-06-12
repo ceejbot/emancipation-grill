@@ -10,7 +10,6 @@ describe('emancipation-grill', function()
 {
     var unsealKey = process.env.VAULT_UNSEAL_TEST;
 
-
     describe('exports', function()
     {
         it('exports a constructor', function()
@@ -54,20 +53,52 @@ describe('emancipation-grill', function()
         {
             g.mounts(function(err, results)
             {
-                console.log(results);
+                results.must.be.an.object();
+                results.must.have.property('sys/');
+                results.must.have.property('secret/');
                 done();
             });
         });
 
         it('must be able to write a secret', function(done)
         {
-            var g = new Grill();
-            done();
+            g.write('test1', { foo: 'bar'}, function(err)
+            {
+                demand(err).not.exist();
+                done();
+            });
         });
 
         it('must be able to read a secret', function(done)
         {
-            done();
+            g.read('test1', function(err, secret)
+            {
+                demand(err).not.exist();
+                secret.must.be.an.object();
+                secret.must.have.property('lease_id');
+                secret.must.have.property('renewable');
+                secret.must.have.property('lease_duration');
+                secret.must.have.property('auth');
+                secret.must.have.property('data');
+                secret.data.must.be.an.object();
+                secret.data.must.have.property('foo');
+                secret.data.foo.must.equal('bar');
+                done();
+            });
+        });
+
+        it('must be able to delete a secret', function(done)
+        {
+            g.delete('test1', function(err)
+            {
+                demand(err).not.exist();
+                g.read('test1', function(err, secret)
+                {
+                    err.must.exist();
+                    err.must.match(/404/);
+                    done();
+                });
+            });
         });
     });
 });

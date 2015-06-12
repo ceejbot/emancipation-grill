@@ -43,7 +43,13 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
 {
     var func = function(name, data, callback)
     {
-        if (typeof data === 'function')
+        if (typeof name === 'function')
+        {
+            callback = name;
+            data = {};
+            name = '';
+        }
+        else if (typeof data === 'function')
         {
             callback = data;
             data = {};
@@ -63,8 +69,6 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
         {
             if (err)
                 return callback(err);
-
-            console.log(body)
 
             if (res.statusCode >= 400)
                 return callback(new Error(`unexpected status code ${res.statusCode}`));

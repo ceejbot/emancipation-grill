@@ -63,6 +63,11 @@ The implemented functions:
 | `disableAudit()` | [DELETE /sys/audit/:backend](http://vaultproject.io/docs/http/sys-audit.html)
 
 
+## TODO
+
+* arity in the input to the function generator to produce tighter code with asserts
+* secret object with conveniences?
+
 ## LICENSE
 
 ISC

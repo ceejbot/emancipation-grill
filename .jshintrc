@@ -50,5 +50,6 @@
         //"anotherCoolGlobal",
         //"iLoveDouglas"
     ],
-    "indent"        : 4         // Specify indentation spacing
+    "indent": 4,         // Specify indentation spacing,
+    "-W086":  true
 }

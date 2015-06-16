@@ -64,6 +64,9 @@ The implemented functions:
 | `audits()` | [GET /sys/audit](http://vaultproject.io/docs/http/sys-audit.html)
 | `enableAudit()` | [PUT /sys/audit/:backend](http://vaultproject.io/docs/http/sys-audit.html)
 | `disableAudit()` | [DELETE /sys/audit/:backend](http://vaultproject.io/docs/http/sys-audit.html)
+| `health()` | | respond with service health object
+| `github()` | | UNIMPLEMENTED TODO
+| `mapGithubTeam()` | | UNIMPLEMENTED TODO
 
 
 ## TODO

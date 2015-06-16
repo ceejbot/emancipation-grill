@@ -66,6 +66,7 @@ describe('emancipation-grill', function()
             {
                 demand(err).not.exist();
                 secret.must.be.an.object();
+                secret.must.be.instanceof(Grill.Secret);
                 secret.must.have.property('lease_id');
                 secret.must.have.property('renewable');
                 secret.must.have.property('lease_duration');
@@ -90,6 +91,17 @@ describe('emancipation-grill', function()
                     done();
                 });
             });
+        });
+
+        it('health() works', function(done)
+        {
+            g.health().then(function(result)
+            {
+                result.must.be.an.object();
+                result.must.have.property('initialized');
+                result.initialized.must.be.true();
+                done();
+            }).done();
         });
     });
 });

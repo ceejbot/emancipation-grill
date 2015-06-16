@@ -42,7 +42,10 @@ The implemented functions:
 | --- | --- | --- |
 | `read()` |  | read a secret
 | `write()` |  | write a secret
-| `read()` |  | delete a secret
+| `delete()` |  | delete a secret
+| `readSecret()` |  | read a secret from the `/secret` path
+| `writeSecret()` |  | write a secret to the `/secret` path
+| `deleteSecret()` |  | delete a secret from the `/secret` path
 | `initialized()` | [GET /sys/init](http://vaultproject.io/docs/http/sys-init.html) | No parameters.
 | `initialize()` | [PUT /sys/init](http://vaultproject.io/docs/http/sys-init.html) | Requires payload.
 | `sealed()` | [GET /sys/seal-status](http://vaultproject.io/docs/http/sys-seal-status.html) | No parameters.

@@ -43,6 +43,7 @@ describe('emancipation-grill', function()
         {
             g.mounts(function(err, results)
             {
+                demand(err).not.exist();
                 results.must.be.an.object();
                 results.must.have.property('sys/');
                 results.must.have.property('secret/');

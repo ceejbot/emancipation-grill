@@ -3,8 +3,11 @@
 var
     demand    = require('must'),
     Grill     = require('../index'),
-    endpoints = require('../lib/endpoints')
+    endpoints = require('../lib/endpoints'),
+    env       = require('node-env-file')
 ;
+
+env(__dirname + '/../.env');
 
 describe('emancipation-grill', function()
 {

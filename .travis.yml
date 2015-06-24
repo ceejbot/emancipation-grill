@@ -11,7 +11,7 @@ before_install:
   - mv vault ~/bin
   - export PATH="~/bin:$PATH"
   - ~/bin/vault server -dev &
-  - printf "VAULT_TOKEN='`vault token create`'" >> .env
+  - VAULT_ADDR='http://127.0.0.1:8200' && T=`vault token-create` && printf "VAULT_TOKEN=\'$T'\n" >> .env
 
 script:
   - npm run test-travis

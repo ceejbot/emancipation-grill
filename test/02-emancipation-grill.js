@@ -8,6 +8,7 @@ var
 ;
 
 env(__dirname + '/../.env');
+console.log(Object.keys(process.env));
 
 describe('emancipation-grill', function()
 {

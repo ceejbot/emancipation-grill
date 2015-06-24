@@ -8,7 +8,8 @@ var
 ;
 
 env(__dirname + '/../.env');
-console.log(Object.keys(process.env));
+console.log(process.env.VAULT_ADDR);
+console.log(process.env.VAULT_TOKEN);
 
 describe('emancipation-grill', function()
 {
@@ -16,7 +17,7 @@ describe('emancipation-grill', function()
     {
         it('can be constructed', function()
         {
-            var g = new Grill({ host: 'http://localhost:4444' });
+            var g = new Grill();
             g.must.be.an.object();
             g.must.be.instanceof(Grill);
             g.must.have.property('sealed');

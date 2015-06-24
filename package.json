@@ -1,8 +1,11 @@
 {
   "name": "emancipation-grill",
-  "version": "0.0.0",
   "description": "a node client for Hashicorp's Vault",
-  "main": "index.js",
+  "version": "0.0.0",
+  "author": "C J Silverio <ceejceej@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ceejbot/emancipation-grill/issues"
+  },
   "dependencies": {
     "bluebird": "~2.9.30",
     "lodash": "~3.9.3",
@@ -12,27 +15,25 @@
   "devDependencies": {
     "istanbul-harmony": "~0.3.16",
     "jscs": "~1.13.1",
+    "jshint": "~2.8.0",
     "mocha": "~2.2.5",
     "must": "~0.12.0"
   },
-  "scripts": {
-    "lint": "jshint index.js test/*.js && jscs test/*.js index.js",
-    "test": "mocha --check-leaks -R spec test/",
-    "coverage": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports test",
-    "test-travis": "npm run lint && npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ceejbot/emancipation-grill.git"
-  },
+  "homepage": "https://github.com/ceejbot/emancipation-grill#readme",
   "keywords": [
     "hashicorp",
     "vault"
   ],
-  "author": "C J Silverio <ceejceej@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ceejbot/emancipation-grill/issues"
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceejbot/emancipation-grill.git"
   },
-  "homepage": "https://github.com/ceejbot/emancipation-grill#readme"
+  "scripts": {
+    "coverage": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports test",
+    "lint": "jshint index.js test/*.js && jscs test/*.js index.js",
+    "test": "mocha --check-leaks -R spec test/",
+    "test-travis": "npm run lint && npm test"
+  }
 }

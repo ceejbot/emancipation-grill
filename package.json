@@ -4,13 +4,13 @@
   "description": "a node client for Hashicorp's Vault",
   "main": "index.js",
   "dependencies": {
-    "bluebird": "~2.9.27",
+    "bluebird": "~2.9.30",
     "lodash": "~3.9.3",
-    "request": "~2.57.0",
-    "tough-cookie": "~1.2.0"
+    "request": "~2.58.0",
+    "tough-cookie": "~2.0.0"
   },
   "devDependencies": {
-    "istanbul": "~0.3.14",
+    "istanbul-harmony": "~0.3.16",
     "jscs": "~1.13.1",
     "mocha": "~2.2.5",
     "must": "~0.12.0"
@@ -18,7 +18,7 @@
   "scripts": {
     "lint": "jshint index.js test/*.js && jscs test/*.js index.js",
     "test": "mocha --check-leaks -R spec test/",
-    "coverage": "istanbul cover _mocha test --recursive -- -u exports -R spec && open coverage/lcov-report/index.html",
+    "coverage": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports test",
     "test-travis": "npm run lint && npm test"
   },
   "repository": {

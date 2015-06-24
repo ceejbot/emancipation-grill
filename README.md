@@ -71,8 +71,8 @@ The implemented functions:
 
 ## TODO
 
-* arity in the input to the function generator to produce tighter code with asserts
-* secret object with conveniences?
+* finish off the api
+* unsealing?
 
 ## LICENSE
 

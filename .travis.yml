@@ -1,13 +1,18 @@
+sudo: false
 language: node_js
 node_js:
     - "0.10"
-    - "0.12"
     - iojs
 
 before_install:
-    - wget http://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb
-    - sudo dpkg -i influxdb_latest_amd64.deb
-    - sudo /etc/init.d/influxdb start
+  - wget -O vault.zip -q https://dl.bintray.com/mitchellh/vault/vault_0.1.2_linux_amd64.zip
+  - unzip vault.zip
+  - mkdir ~/bin
+  - mv vault ~/bin
+  - export PATH="~/bin:$PATH"
+  - ~/bin/vault server -dev &
+  - printf "export VAULT_ADDR='http://127.0.0.1:8200'" >> .env
+  - printf "export VAULT_TOKEN='`vault token create`' >> .env
 
 script:
   - npm run test-travis

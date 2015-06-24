@@ -12,7 +12,7 @@ before_install:
   - export PATH="~/bin:$PATH"
   - ~/bin/vault server -dev &
   - printf "export VAULT_ADDR='http://127.0.0.1:8200'" >> .env
-  - printf "export VAULT_TOKEN='`vault token create`' >> .env
+  - printf "export VAULT_TOKEN='`vault token create`'" >> .env
 
 script:
   - npm run test-travis

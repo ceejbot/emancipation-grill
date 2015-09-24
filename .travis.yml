@@ -2,9 +2,10 @@ sudo: false
 language: node_js
 node_js:
     - iojs
+    - node
 
 before_install:
-  - wget -O vault.zip -q https://dl.bintray.com/mitchellh/vault/vault_0.1.2_linux_amd64.zip
+  - wget -O vault.zip -q https://dl.bintray.com/mitchellh/vault/vault_0.2.0_linux_amd64.zip
   - unzip vault.zip
   - mkdir ~/bin
   - mv vault ~/bin
@@ -13,4 +14,4 @@ before_install:
   - export VAULT_ADDR='http://127.0.0.1:8200' && T=`vault token-create` && printf "VAULT_TOKEN=\'$T'\n" >> .env
 
 script:
-  - npm run test-travis
+  - npm run travis

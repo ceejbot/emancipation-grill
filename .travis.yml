@@ -6,7 +6,7 @@ node_js:
 
 before_install:
   - npm install json
-  - wget -O vault.zip -q https://dl.bintray.com/mitchellh/vault/vault_0.2.0_linux_amd64.zip
+  - wget -O vault.zip -q https://dl.bintray.com/mitchellh/vault/vault_0.3.0_linux_amd64.zip
   - unzip vault.zip
   - mkdir ~/bin
   - mv vault ~/bin

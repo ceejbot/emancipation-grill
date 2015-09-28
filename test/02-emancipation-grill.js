@@ -8,8 +8,6 @@ var
 ;
 
 env(__dirname + '/../.env');
-console.log(process.env.VAULT_ADDR);
-console.log(process.env.VAULT_TOKEN);
 
 describe('emancipation-grill', function()
 {

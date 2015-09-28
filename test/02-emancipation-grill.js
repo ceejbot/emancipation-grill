@@ -113,7 +113,7 @@ describe('emancipation-grill', function()
             {
                 result.must.be.an.object();
                 result.must.have.property('token/');
-                result['token/'].must.be.an.object()
+                result['token/'].must.be.an.object();
                 result['token/'].must.have.property('description');
                 result['token/'].description.must.equal('token based credentials');
                 done();

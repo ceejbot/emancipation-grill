@@ -1,7 +1,7 @@
 {
   "name": "emancipation-grill",
   "description": "a node client for Hashicorp's Vault",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "C J Silverio <ceejceej@gmail.com>",
   "bugs": {
     "url": "https://github.com/ceejbot/emancipation-grill/issues"

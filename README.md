@@ -2,9 +2,9 @@
 
 A pure JavaScript node client for [Hashicorp's Vault](https://hashicorp.com/blog/vault.html).
 
-[![on npm](http://img.shields.io/npm/v/emancipation-grill.svg?style=flat)](https://www.npmjs.org/package/emancipation-grill)  [![Tests](http://img.shields.io/travis/ceejbot/emancipation-grill.svg?style=flat)](http://travis-ci.org/ceejbot/emancipation-grill)  ![Coverage](http://img.shields.io/badge/coverage-96%25-green.svg?style=flat)   [![Dependencies](http://img.shields.io/david/ceejbot/emancipation-grill.svg?style=flat)](https://david-dm.org/ceejbot/emancipation-grill) ![io.js supported](https://img.shields.io/badge/io.js-supported-green.svg?style=flat)
+[![on npm](http://img.shields.io/npm/v/emancipation-grill.svg?style=flat)](https://www.npmjs.org/package/emancipation-grill)  [![Tests](http://img.shields.io/travis/ceejbot/emancipation-grill.svg?style=flat)](http://travis-ci.org/ceejbot/emancipation-grill)  ![Coverage](http://img.shields.io/badge/coverage-96%25-green.svg?style=flat)   [![Dependencies](http://img.shields.io/david/ceejbot/emancipation-grill.svg?style=flat)](https://david-dm.org/ceejbot/emancipation-grill)
 
-Tested against vault 0.3.
+Tested against vault 0.3. Uses ES6 template strings, so it requires iojs or node 4 or newer.
 
 ## Usage
 
@@ -66,6 +66,9 @@ The implemented functions:
 | `audits()` | [GET /sys/audit](http://vaultproject.io/docs/http/sys-audit.html)
 | `enableAudit()` | [PUT /sys/audit/:backend](http://vaultproject.io/docs/http/sys-audit.html)
 | `disableAudit()` | [DELETE /sys/audit/:backend](http://vaultproject.io/docs/http/sys-audit.html)
+| `auths()` | [GET /sys/auth](http://vaultproject.io/docs/http/sys-auth.html)
+| `enableAuth()` | [PUT /sys/auth/:mountpoint](http://vaultproject.io/docs/http/sys-auth.html) | Requires `type` param in payload.
+| `disableAuth()` | [DELETE /sys/auth/:mountpoint](http://vaultproject.io/docs/http/sys-auth.html)
 | `health()` | | respond with service health object
 | `github()` | | UNIMPLEMENTED TODO
 | `mapGithubTeam()` | | UNIMPLEMENTED TODO

@@ -106,5 +106,46 @@ describe('emancipation-grill', function()
                 done();
             }).done();
         });
+
+        it('auths() works', function(done)
+        {
+            g.auths().then(function(result)
+            {
+                result.must.be.an.object();
+                result.must.have.property('token/');
+                result['token/'].must.be.an.object()
+                result['token/'].must.have.property('description');
+                result['token/'].description.must.equal('token based credentials');
+                done();
+            }).done();
+        });
+
+        it('can enable an auth backend', function(done)
+        {
+            g.enableAuth('appid', {type: 'app-id'}).then(function(result)
+            {
+                return g.auths();
+            })
+            .then(function(result)
+            {
+                result.must.be.an.object();
+                result.must.have.property('appid/');
+                done();
+            }).done();
+        });
+
+        it('can disable an auth backend', function(done)
+        {
+            g.disableAuth('appid').then(function(result)
+            {
+                return g.auths();
+            })
+            .then(function(result)
+            {
+                result.must.be.an.object();
+                result.must.not.have.property('appid/');
+                done();
+            }).done();
+        });
     });
 });

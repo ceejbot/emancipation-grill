@@ -4,7 +4,8 @@ var
     demand    = require('must'),
     Grill     = require('../index'),
     endpoints = require('../lib/endpoints'),
-    env       = require('node-env-file')
+    env       = require('node-env-file'),
+    fs        = require('fs')
 ;
 
 env(__dirname + '/../.env');
@@ -35,6 +36,18 @@ describe('emancipation-grill', function()
                 g.must.have.property(verbs[i]);
                 g[verbs[i]].must.be.a.function();
             }
+        });
+
+        it('throws when you do not pass required arguments', function(done)
+        {
+            var g = new Grill();
+            g.readSecret()
+            .then(function() { })
+            .catch(function(err)
+            {
+                err.must.match(/missing required arguments/);
+                done();
+            }).done();
         });
     });
 
@@ -146,6 +159,48 @@ describe('emancipation-grill', function()
                 result.must.not.have.property('appid/');
                 done();
             }).done();
+        });
+
+        it('can enable an audit backend', function(done)
+        {
+            var opts =
+            {
+                type: 'file',
+                description: 'logging',
+                options:  { path: './audit.log' },
+            };
+            g.enableAudit('fooble', opts).then(function(result)
+            {
+                done();
+            }).done();
+        });
+
+        it('audits() works', function(done)
+        {
+            g.audits().then(function(result)
+            {
+                result.must.be.an.object();
+                result.must.have.property('fooble/');
+                done();
+            }).done();
+        });
+
+        it('can disable an audit backend', function(done)
+        {
+            g.disableAudit('fooble').then(function(result)
+            {
+                return g.audits();
+            }).then(function(result)
+            {
+                result.must.be.an.object();
+                Object.keys(result).length.must.equal(0);
+                done();
+            }).done();
+        });
+
+        after(function()
+        {
+            fs.unlinkSync('./audit.log');
         });
     });
 });

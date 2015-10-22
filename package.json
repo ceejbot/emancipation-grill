@@ -9,11 +9,11 @@
   "dependencies": {
     "bluebird": "~2.10.1",
     "lodash": "~3.10.1",
-    "request": "~2.64.0",
-    "tough-cookie": "~2.0.0"
+    "request": "~2.65.0",
+    "tough-cookie": "~2.2.0"
   },
   "devDependencies": {
-    "eslint": "~1.5.1",
+    "eslint": "~1.7.3",
     "istanbul-harmony": "~0.3.16",
     "mocha": "~2.3.3",
     "must": "~0.13.1",

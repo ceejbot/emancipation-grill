@@ -198,9 +198,12 @@ describe('emancipation-grill', function()
             }).done();
         });
 
-        after(function()
+        after(function(done)
         {
-            fs.unlinkSync('./audit.log');
+            fs.unlink('./audit.log', function(ignored)
+            {
+                done();
+            });
         });
     });
 });

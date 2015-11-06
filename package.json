@@ -13,7 +13,7 @@
     "tough-cookie": "~2.2.0"
   },
   "devDependencies": {
-    "eslint": "~1.7.3",
+    "eslint": "~1.9.0",
     "istanbul-harmony": "~0.3.16",
     "mocha": "~2.3.3",
     "must": "~0.13.1",

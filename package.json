@@ -7,7 +7,7 @@
     "url": "https://github.com/ceejbot/emancipation-grill/issues"
   },
   "dependencies": {
-    "bluebird": "~3.1.1",
+    "bluebird": "~3.2.2",
     "lodash": "~4.2.1",
     "node-env-file": "~0.1.8",
     "request": "~2.69.0",

@@ -7,18 +7,17 @@
     "url": "https://github.com/ceejbot/emancipation-grill/issues"
   },
   "dependencies": {
-    "bluebird": "~3.2.2",
+    "bluebird": "~3.3.1",
     "lodash": "~4.5.0",
-    "node-env-file": "~0.1.8",
     "request": "~2.69.0",
     "tough-cookie": "~2.2.1"
   },
   "devDependencies": {
-    "eslint": "~2.2.0",
-    "istanbul-harmony": "~0.3.16",
-    "mocha": "~2.4.2",
+    "eslint": "2.*",
+    "mocha": "2.*",
     "must": "~0.13.1",
-    "node-env-file": "~0.1.7"
+    "node-env-file": "~0.1.8",
+    "nyc": "5.*"
   },
   "homepage": "https://github.com/ceejbot/emancipation-grill#readme",
   "keywords": [
@@ -32,9 +31,9 @@
     "url": "git+https://github.com/ceejbot/emancipation-grill.git"
   },
   "scripts": {
-    "coverage": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint index.js test/*.js",
-    "test": "mocha --check-leaks -R spec test/",
-    "travis": "npm run lint && npm test"
+    "test": "nyc mocha --check-leaks -R spec test/",
+    "travis": "npm run lint && npm test && npm run coverage"
   }
 }

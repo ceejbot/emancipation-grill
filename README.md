@@ -2,7 +2,7 @@
 
 A pure JavaScript node client for [Hashicorp's Vault](https://hashicorp.com/blog/vault.html).
 
-[![on npm](http://img.shields.io/npm/v/emancipation-grill.svg?style=flat)](https://www.npmjs.org/package/emancipation-grill)  [![Tests](http://img.shields.io/travis/ceejbot/emancipation-grill.svg?style=flat)](http://travis-ci.org/ceejbot/emancipation-grill)  ![Coverage](http://img.shields.io/badge/coverage-96%25-green.svg?style=flat)   [![Dependencies](http://img.shields.io/david/ceejbot/emancipation-grill.svg?style=flat)](https://david-dm.org/ceejbot/emancipation-grill)
+[![on npm](http://img.shields.io/npm/v/emancipation-grill.svg?style=flat)](https://www.npmjs.org/package/emancipation-grill)  [![Tests](http://img.shields.io/travis/ceejbot/emancipation-grill.svg?style=flat)](http://travis-ci.org/ceejbot/emancipation-grill)  [![Coverage](http://img.shields.io/coveralls/ceejbot/emancipation-grill.svg?style=flat)](https://coveralls.io/r/ceejbot/emancipation-grill)   [![Dependencies](http://img.shields.io/david/ceejbot/emancipation-grill.svg?style=flat)](https://david-dm.org/ceejbot/emancipation-grill)
 
 Tested against vault 0.5.0. Uses ES6 template strings, so it requires node 4 or newer.
 

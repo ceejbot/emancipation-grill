@@ -9,7 +9,7 @@
   "dependencies": {
     "bluebird": "~3.3.1",
     "lodash": "~4.7.0",
-    "request": "~2.69.0",
+    "request": "~2.70.0",
     "tough-cookie": "~2.2.1"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ var
 	Request   = require('request'),
 	Secret    = require('./lib/secret'),
 	endpoints = require('./lib/endpoints')
-;
+	;
 
 var Grill = module.exports = function Grill(opts)
 {
@@ -15,8 +15,7 @@ var Grill = module.exports = function Grill(opts)
 	this.host = process.env.VAULT_ADDR;
 	this.token = process.env.VAULT_TOKEN;
 
-	this.request = Request.defaults(
-	{
+	this.request = Request.defaults({
 		jar: true,
 		headers: { 'X-Vault-Token': this.token }
 	});
@@ -49,16 +48,15 @@ Grill.prototype.makeCommand = function makeCommand(command, params)
 		var callback = arguments[params.arity];
 		switch (params.arity)
 		{
-			case 2:
-				data = arguments[1];
-				// fall through
-			case 1:
-				name = arguments[0];
-				break;
+		case 2:
+			data = arguments[1];
+			// fall through
+		case 1:
+			name = arguments[0];
+			break;
 		}
 
-		var ropts =
-		{
+		var ropts = {
 			method: params.method || 'GET',
 			uri:    `${this.host}/${this.version}${params.path(name)}`,
 			json:   true,

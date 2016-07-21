@@ -1,8 +1,8 @@
 /*global describe:true, it:true, before:true, after:true */
 
 var
-	_         = require('lodash'),
 	demand    = require('must'),
+	foreach   = require('lodash.foreach'),
 	Endpoints = require('../lib/endpoints')
 	;
 
@@ -18,7 +18,7 @@ describe('endpoints', function()
 
 	it('each entry has an arity and a path', function()
 	{
-		_.each(Endpoints, function(v, k)
+		foreach(Endpoints, function(v, k)
 		{
 			var method = Endpoints[k];
 			method.must.have.property('arity');
@@ -30,10 +30,9 @@ describe('endpoints', function()
 
 	it('the path function returns a string', function()
 	{
-		_.each(Endpoints, function(method, k)
+		foreach(Endpoints, function(method, k)
 		{
 			method.path('foo').must.be.a.string();
 		});
-
 	});
 });

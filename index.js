@@ -1,6 +1,6 @@
 var
-	_         = require('lodash'),
 	assert    = require('assert'),
+	foreach   = require('lodash.foreach'),
 	P         = require('bluebird'),
 	Request   = require('request'),
 	Secret    = require('./lib/secret'),
@@ -22,13 +22,13 @@ var Grill = module.exports = function Grill(opts)
 
 	var self = this;
 
-	_.each(endpoints, function(v, k)
+	foreach(endpoints, function(v, k)
 	{
 		var func = self.makeCommand(k, v);
 		self[k] = P.promisify(func).bind(self);
 	});
 
-	_.each(Grill.functions, function(k)
+	foreach(Grill.functions, function(k)
 	{
 		self[k] = P.promisify(self['_' + k]).bind(self);
 	});

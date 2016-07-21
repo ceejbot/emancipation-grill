@@ -8,15 +8,16 @@
   },
   "dependencies": {
     "bluebird": "~3.4.1",
-    "lodash": "~4.11.0",
+    "lodash.assign": "~4.0.9",
+    "lodash.foreach": "~4.3.0",
     "request": "~2.73.0",
     "tough-cookie": "~2.2.1"
   },
   "devDependencies": {
     "coveralls": "2.*",
     "eslint": "~3.1.1",
-    "mocha": "2.*",
-    "must": "~0.13.1",
+    "mocha": "~2.5.3",
+    "must": "~0.13.2",
     "node-env-file": "~0.1.8",
     "nyc": "7.0.0"
   },

@@ -15,7 +15,7 @@
   "devDependencies": {
     "coveralls": "2.*",
     "eslint": "~3.1.1",
-    "mocha": "2.*",
+    "mocha": "2.5.0",
     "must": "~0.13.1",
     "node-env-file": "~0.1.8",
     "nyc": "7.0.0"

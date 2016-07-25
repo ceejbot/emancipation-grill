@@ -19,7 +19,7 @@
     "mocha": "~2.5.3",
     "must": "~0.13.2",
     "node-env-file": "~0.1.8",
-    "nyc": "7.0.0"
+    "nyc": "7.1.0"
   },
   "homepage": "https://github.com/ceejbot/emancipation-grill#readme",
   "keywords": [

@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bluebird": "~3.4.1",
-    "lodash.assign": "~4.0.9",
+    "lodash.assign": "~4.1.0",
     "lodash.foreach": "~4.3.0",
     "request": "~2.73.0",
     "tough-cookie": "~2.2.1"

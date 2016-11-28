@@ -10,8 +10,7 @@
     "bluebird": "~3.4.1",
     "lodash.assign": "~4.2.0",
     "lodash.foreach": "~4.5.0",
-    "request": "~2.79.0",
-    "tough-cookie": "~2.3.2"
+    "request": "~2.79.0"
   },
   "devDependencies": {
     "coveralls": "2.*",

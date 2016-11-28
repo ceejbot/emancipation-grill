@@ -11,7 +11,7 @@
     "lodash.assign": "~4.0.9",
     "lodash.foreach": "~4.3.0",
     "request": "~2.79.0",
-    "tough-cookie": "~2.2.1"
+    "tough-cookie": "~2.3.2"
   },
   "devDependencies": {
     "coveralls": "2.*",

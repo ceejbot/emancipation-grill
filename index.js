@@ -37,13 +37,14 @@ var Grill = module.exports = function Grill(opts)
 Grill.prototype.version = 'v1';
 
 // Not auto-generated, but need binding.
-Grill.functions = [ 'health', 'github', 'mapGithubTeam' ];
+Grill.functions = ['health', 'github', 'mapGithubTeam'];
 
 Grill.prototype.makeCommand = function makeCommand(command, params)
 {
 	var func = function()
 	{
-		var name = '', data = {};
+		var name = '',
+			data = {};
 		assert(arguments.length > params.arity, 'missing required arguments for ' + command);
 		var callback = arguments[params.arity];
 		switch (params.arity)

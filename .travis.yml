@@ -1,8 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-  - "4.*"
-  - "5.*"
+  - "4."
+  - "6"
+  - "7"
 before_install:
   - npm install json
   - wget -O vault.zip -q https://releases.hashicorp.com/vault/0.5.2/vault_0.5.2_linux_amd64.zip

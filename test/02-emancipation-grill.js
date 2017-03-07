@@ -193,7 +193,7 @@ describe('emancipation-grill', function()
 			.then(function(result)
 			{
 				result.must.be.an.object();
-				Object.keys(result).length.must.equal(0);
+				result.must.not.have.property('fooble/');
 				done();
 			}).done();
 		});

@@ -6,7 +6,7 @@ node_js:
   - "7"
 before_install:
   - npm install json
-  - wget -O vault.zip -q https://releases.hashicorp.com/vault/0.6.5/vault_0.6.5_linux_amd64.zip
+  - wget -O vault.zip https://releases.hashicorp.com/vault/0.6.5/vault_0.6.5_linux_amd64.zip
   - unzip vault.zip
   - mkdir ~/bin
   - mv vault ~/bin

@@ -10,7 +10,7 @@
     "bluebird": "~3.5.0",
     "lodash.assign": "~4.2.0",
     "lodash.foreach": "~4.5.0",
-    "request": "~2.80.0"
+    "request": "~2.81.0"
   },
   "devDependencies": {
     "coveralls": "~2.12.0",

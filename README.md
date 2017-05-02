@@ -1,5 +1,7 @@
 # emancipation-grill
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ceejbot/emancipation-grill.svg)](https://greenkeeper.io/)
+
 A pure JavaScript node client for [Hashicorp's Vault](https://hashicorp.com/blog/vault.html).
 
 [![on npm](http://img.shields.io/npm/v/emancipation-grill.svg?style=flat)](https://www.npmjs.org/package/emancipation-grill)  [![Tests](http://img.shields.io/travis/ceejbot/emancipation-grill.svg?style=flat)](http://travis-ci.org/ceejbot/emancipation-grill)  [![Coverage](http://img.shields.io/coveralls/ceejbot/emancipation-grill.svg?style=flat)](https://coveralls.io/r/ceejbot/emancipation-grill)   [![Dependencies](http://img.shields.io/david/ceejbot/emancipation-grill.svg?style=flat)](https://david-dm.org/ceejbot/emancipation-grill)
